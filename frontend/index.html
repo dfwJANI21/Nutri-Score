@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NutriScore - explore food nutrition</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">NutriScore</a>
+    <nav aria-label="Main">
+      <a href="index.html#search">Explore</a>
+      <a href="about.html">How it works</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Good food choices start with knowing more.</h1>
+      <p class="lead">Explore nutrition facts, understand food quality and discover what goes into a food's nutritional score.</p>
+    </section>
+
+    <section id="search" aria-label="Search">
+      <form id="name-form">
+        <label for="q">Search by product name</label>
+        <div class="row">
+          <input id="q" name="q" type="search" minlength="2" maxlength="100" required>
+          <button type="submit">Search</button>
+        </div>
+      </form>
+
+      <form id="barcode-form">
+        <label for="barcode">Or look up a barcode</label>
+        <div class="row">
+          <input id="barcode" name="barcode" inputmode="numeric" pattern="[0-9]{8,14}" required>
+          <button type="submit">Look up</button>
+        </div>
+      </form>
+    </section>
+
+    <section aria-labelledby="results-heading">
+      <h2 id="results-heading" tabindex="-1">Results</h2>
+      <p id="status" role="status" aria-live="polite"></p>
+      <ul id="results"></ul>
+      <nav id="pager" aria-label="Result pages" hidden>
+        <button id="prev" type="button">Previous</button>
+        <span id="page-label"></span>
+        <button id="next" type="button">Next</button>
+      </nav>
+    </section>
+
+    <section class="intro">
+      <h2>What is a nutritional score?</h2>
+      <p>Nutri-Score is a label that rates the nutritional quality of a packaged food from A (best) to E. It adds up points for things to limit (energy, sugars, saturated fat, salt) and subtracts points for things to favour (fibre, protein, fruit, vegetables and legumes). The lower the final score, the better the grade.</p>
+      <p><a href="about.html">Read how this site calculates it</a>.</p>
+    </section>
+  </main>
+
+  <!-- Reusable block for ONE result. search.js copies it for every product. -->
+  <template id="result-template">
+    <li class="result">
+      <a class="result-link" href="#">
+        <img class="result-img" alt="" width="80" height="80">
+        <div>
+          <h3 class="result-name"></h3>
+          <p class="result-brand"></p>
+          <p class="result-category"></p>
+          <p class="result-source-grade"></p>
+        </div>
+      </a>
+    </li>
+  </template>
+
+  <script src="js/api.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
