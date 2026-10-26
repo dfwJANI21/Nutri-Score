@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product analysis - NutriScore</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">NutriScore</a>
+    <nav aria-label="Main">
+      <a href="index.html#search">Explore</a>
+      <a href="about.html">How it works</a>
+    </nav>
+  </header>
+
+  <main>
+    <p><a href="index.html#search">&larr; Back to search</a></p>
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <article id="product" hidden>
+      <div class="product-head">
+        <img id="product-image" alt="" hidden>
+        <div>
+          <h1 id="product-name"></h1>
+          <p class="meta" id="product-brand"></p>
+          <p class="meta" id="product-category"></p>
+          <p class="meta">Barcode: <span id="product-barcode"></span></p>
+        </div>
+      </div>
+
+      <section aria-labelledby="score-heading">
+        <h2 id="score-heading">Scores</h2>
+        <div class="scores">
+        <!-- Keep these two clearly separate: never show the source grade as ours. -->
+        <div id="source-grade">
+          <h3>Listed by Open Food Facts</h3>
+          <p class="value">Not provided</p>
+        </div>
+        <div id="calculated-grade">
+          <h3>Calculated by NutriScore (our code)</h3>
+          <p class="value">Score unavailable</p>
+          <p class="reason"></p>
+          <ul id="breakdown" hidden></ul>
+        </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="nutrition-heading">
+        <h2 id="nutrition-heading">Nutrition per 100 g / 100 ml</h2>
+        <table>
+          <thead><tr><th scope="col">Nutrient</th><th scope="col">Amount</th></tr></thead>
+          <tbody id="nutrition-body"></tbody>
+        </table>
+        <p id="completeness"></p>
+      </section>
+
+      <section aria-labelledby="ingredients-heading">
+        <h2 id="ingredients-heading">Ingredients</h2>
+        <p id="ingredients"></p>
+      </section>
+
+      <p class="attribution">Data: <a id="source-link" href="https://world.openfoodfacts.org">Open Food Facts</a> (ODbL).</p>
+    </article>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>
