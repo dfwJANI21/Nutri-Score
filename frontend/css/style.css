@@ -1,0 +1,84 @@
+/* Design tokens */
+:root {
+  --bg: #faf7f0;          /* warm ivory */
+  --ink: #232323;         /* charcoal */
+  --muted: #5d5d55;
+  --green: #2f4f3a;       /* forest green (primary) */
+  --olive: #7a8450;
+  --orange: #c8742b;
+  --yellow: #d9b44a;
+  --red: #b5472f;
+  --line: #d9d3c4;        /* fine borders */
+  --space: 1rem;
+  --max: 62rem;
+  --font-head: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.6; }
+h1, h2, h3 { font-family: var(--font-head); color: var(--green); line-height: 1.2; margin: 0 0 .5rem; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: 1.5rem; margin-top: 2.5rem; }
+h3 { font-size: 1.1rem; }
+a { color: var(--green); }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+/* Layout */
+.site-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem;
+  max-width: var(--max); margin: 0 auto; padding: var(--space); border-bottom: 1px solid var(--line); }
+.wordmark { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+.site-header nav a { margin-left: 1.5rem; }
+main { max-width: var(--max); margin: 0 auto; padding: 2rem var(--space) 4rem; }
+.hero { max-width: 40rem; margin-bottom: 2.5rem; }
+.lead { font-size: 1.15rem; color: var(--muted); }
+
+/* Search */
+#search { display: grid; gap: 1.5rem; grid-template-columns: 2fr 1.3fr; align-items: end;
+  padding: 1.5rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+form label { display: block; font-weight: 600; margin-bottom: .35rem; }
+.row { display: flex; }
+input { flex: 1; min-width: 0; padding: .65rem .8rem; font: inherit; background: #fff; border: 1px solid var(--line); border-right: 0; }
+button { padding: .65rem 1.2rem; font: inherit; font-weight: 600; color: #fff; background: var(--green); border: 1px solid var(--green); cursor: pointer; }
+button:hover:not(:disabled) { background: #263f2e; }
+button:disabled { opacity: .45; cursor: default; }
+
+/* Results */
+#status { color: var(--muted); min-height: 1.6em; }
+#status.error { color: var(--red); }
+#results { list-style: none; margin: 0; padding: 0; }
+.result { border-bottom: 1px solid var(--line); }
+.result-link { display: flex; gap: 1rem; align-items: center; padding: .9rem .25rem; text-decoration: none; color: inherit; }
+.result-link:hover { background: #f1ecdf; }
+.result-img { width: 80px; height: 80px; object-fit: contain; background: #fff; border: 1px solid var(--line); flex: none; }
+.result-name { margin: 0; }
+.result-brand, .result-category { margin: 0; color: var(--muted); font-size: .95rem; }
+#pager { display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem; }
+
+/* Grade letters */
+.grade { display: inline-block; min-width: 2rem; padding: 0 .5rem; text-align: center; font-weight: 700; color: #fff; border-radius: 2px; }
+.grade-a { background: #2e7d4f; } .grade-b { background: #85a63a; }
+.grade-c { background: #d9b44a; color: #232323; } .grade-d { background: var(--orange); } .grade-e { background: var(--red); }
+.source-note { font-size: .85rem; color: var(--muted); }
+
+/* Product page */
+.product-head { display: grid; grid-template-columns: 240px 1fr; gap: 2rem; align-items: start; margin-bottom: 1rem; }
+#product-image { width: 100%; background: #fff; border: 1px solid var(--line); }
+.meta { color: var(--muted); margin: 0 0 .25rem; }
+.scores { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.scores > div { border: 1px solid var(--line); padding: 1rem 1.25rem; background: #fff; }
+.scores .grade { font-size: 2rem; padding: .1rem 1rem; }
+.scores .value { margin: .25rem 0; }
+table { border-collapse: collapse; width: 100%; max-width: 32rem; background: #fff; }
+th, td { text-align: left; padding: .45rem .75rem; border-bottom: 1px solid var(--line); }
+td.na { color: var(--muted); font-style: italic; }
+#breakdown { padding-left: 1.2rem; margin: .5rem 0 0; font-size: .95rem; }
+.attribution { margin-top: 2rem; font-size: .9rem; color: var(--muted); }
+
+/* Mobile */
+@media (max-width: 40rem) {
+  #search { grid-template-columns: 1fr; }
+  .product-head, .scores { grid-template-columns: 1fr; }
+  #product-image { max-width: 200px; }
+  .site-header nav a { margin: 0 1rem 0 0; }
+}
