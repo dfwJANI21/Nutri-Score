@@ -6,8 +6,6 @@ from Open Food Facts, and a Nutri-Score grade calculated by this project's own c
 Plain HTML/CSS/JavaScript frontend + a small FastAPI backend. Only one external service is used:
 [Open Food Facts](https://openfoodfacts.github.io/documentation/) (data only; it never decides our grade).
 
-> Built with AI assistance (Claude). Declare this according to your college's rules.
-
 ## Run it
 Needs Python 3.9+.
 ```
