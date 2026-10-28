@@ -1,0 +1,4 @@
+html5-qrcode 2.3.8 (html5-qrcode.min.js)
+Barcode scanning library by Minhaz (mebjas), licensed under Apache-2.0.
+https://github.com/mebjas/html5-qrcode
+Included unchanged. Used by js/scanner.js.
