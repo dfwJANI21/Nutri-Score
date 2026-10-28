@@ -22,6 +22,14 @@ Before real use, put your own email in `USER_AGENT` in `backend/off_client.py`
 
 Tests (from the project root): `python -m pytest -q`
 
+## Barcode scanning
+On the home page you can find a product three ways: search by name, scan its barcode with the
+camera, or scan a photo of the barcode. You can also type the number under the barcode.
+- Scanning is done in the browser by the open-source `html5-qrcode` library (bundled in `frontend/js/lib/`).
+  Camera images are not uploaded anywhere.
+- The camera needs `http://localhost:8000` or https. It will not work from an address like `http://192.168.x.x:8000`.
+- Supported barcodes: EAN-13, EAN-8, UPC-A, UPC-E (what you find on food packs).
+
 ## How the grade is calculated
 Updated 2023 Nutri-Score algorithm for **general foods**, per 100 g:
 - Unfavourable points N: energy (0-10), sugars (0-15), saturated fat (0-10), salt (0-20)
@@ -50,7 +58,13 @@ Missing values are never replaced by 0.
 | `backend/rules_2023.py` | Official point tables and grade boundaries |
 | `backend/scoring.py` | Scoring engine |
 | `backend/main.py` | API routes + serves the frontend |
-| `frontend/` | `index.html` (search), `product.html` (analysis), `about.html` (method), `js/`, `css/` |
+| `frontend/index.html`, `product.html`, `about.html` | The three pages (search + scanner, product analysis, method) |
+| `frontend/css/style.css` | All styling (blue, pink and yellow design) |
+| `frontend/js/api.js` | Talks to the backend |
+| `frontend/js/search.js` | Search by name, results and paging |
+| `frontend/js/scanner.js` | Camera, photo and typed barcode lookup |
+| `frontend/js/product.js` | Fills the product page |
+| `frontend/js/lib/` | Bundled `html5-qrcode` scanner library (Apache-2.0) |
 | `tests/` | Client, API and scoring tests |
 
 ## API contract (shapes only; `null` means the source did not provide it)
@@ -88,5 +102,6 @@ Errors (any route): `{ "error": { "code": str, "message": str } }` with codes
 - Scientific discussion of the 2023 update: https://www.nature.com/articles/s43016-024-00920-3
 
 ## Attribution
+Barcode scanning: [html5-qrcode](https://github.com/mebjas/html5-qrcode) by Minhaz (mebjas), Apache-2.0, included unchanged.
 Product data: Open Food Facts contributors, ODbL 1.0. NutriScore is an independent educational
 project, not an official Nutri-Score service and not endorsed by its owners.

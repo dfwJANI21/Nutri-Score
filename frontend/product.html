@@ -4,19 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Product analysis - NutriScore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site-header">
     <a class="wordmark" href="index.html">NutriScore</a>
     <nav aria-label="Main">
-      <a href="index.html#search">Explore</a>
+      <a href="index.html#find">Explore</a>
       <a href="about.html">How it works</a>
     </nav>
   </header>
 
   <main>
-    <p><a href="index.html#search">&larr; Back to search</a></p>
+    <p class="back"><a href="index.html#find">&larr; Back to search</a></p>
     <p id="status" role="status" aria-live="polite"></p>
 
     <article id="product" hidden>
@@ -32,38 +35,42 @@
 
       <section aria-labelledby="score-heading">
         <h2 id="score-heading">Scores</h2>
-        <div class="scores">
-        <!-- Keep these two clearly separate: never show the source grade as ours. -->
-        <div id="source-grade">
-          <h3>Listed by Open Food Facts</h3>
-          <p class="value">Not provided</p>
-        </div>
-        <div id="calculated-grade">
-          <h3>Calculated by NutriScore (our code)</h3>
-          <p class="value">Score unavailable</p>
-          <p class="reason"></p>
-          <ul id="breakdown" hidden></ul>
-        </div>
+        <!-- Two separate blocks: never show the Open Food Facts grade as ours. -->
+        <div class="grid two">
+          <div class="card" id="calculated-grade">
+            <h3>Calculated by NutriScore</h3>
+            <p class="value">Score unavailable</p>
+            <p class="reason"></p>
+            <ul id="breakdown" hidden></ul>
+          </div>
+          <div class="card sun" id="source-grade">
+            <h3>Listed by Open Food Facts</h3>
+            <p class="value">Not provided</p>
+          </div>
         </div>
       </section>
 
       <section aria-labelledby="nutrition-heading">
         <h2 id="nutrition-heading">Nutrition per 100 g / 100 ml</h2>
-        <table>
-          <thead><tr><th scope="col">Nutrient</th><th scope="col">Amount</th></tr></thead>
-          <tbody id="nutrition-body"></tbody>
-        </table>
-        <p id="completeness"></p>
+        <div class="card">
+          <table>
+            <thead><tr><th scope="col">Nutrient</th><th scope="col">Amount</th></tr></thead>
+            <tbody id="nutrition-body"></tbody>
+          </table>
+          <p id="completeness"></p>
+        </div>
       </section>
 
       <section aria-labelledby="ingredients-heading">
         <h2 id="ingredients-heading">Ingredients</h2>
-        <p id="ingredients"></p>
+        <div class="card sun"><p id="ingredients"></p></div>
       </section>
 
-      <p class="attribution">Data: <a id="source-link" href="https://world.openfoodfacts.org">Open Food Facts</a> (ODbL).</p>
+      <p class="attribution">Data: <a id="source-link" href="https://world.openfoodfacts.org">Open Food Facts</a> (ODbL licence).</p>
     </article>
   </main>
+
+  <footer class="site-footer">NutriScore is an independent student project. Product data from Open Food Facts.</footer>
 
   <script src="js/api.js"></script>
   <script src="js/product.js"></script>

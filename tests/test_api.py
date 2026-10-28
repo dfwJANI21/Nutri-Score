@@ -28,6 +28,11 @@ def test_frontend_is_served():
     assert r.status_code == 200 and "NutriScore" in r.text
 
 
+def test_scanner_files_are_served():
+    for path in ["/js/scanner.js", "/js/lib/html5-qrcode.min.js"]:
+        assert client.get(path).status_code == 200
+
+
 def test_analysis_unavailable_when_scoring_not_implemented(monkeypatch):
     monkeypatch.setattr(off_client, "get_product", lambda b: fake_product())
 

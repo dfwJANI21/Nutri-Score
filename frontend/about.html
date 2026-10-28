@@ -4,47 +4,61 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How it works - NutriScore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site-header">
     <a class="wordmark" href="index.html">NutriScore</a>
     <nav aria-label="Main">
-      <a href="index.html#search">Explore</a>
+      <a href="index.html#find">Explore</a>
       <a href="about.html">How it works</a>
     </nav>
   </header>
 
-  <main>
+  <main class="prose">
     <h1>How it works</h1>
-    <ol>
-      <li>Search for a product or enter its barcode.</li>
-      <li>We retrieve the available product data from Open Food Facts.</li>
-      <li>The nutrition values are normalized (per 100 g or 100 ml).</li>
-      <li>The appropriate product category is determined.</li>
-      <li>The relevant Nutri-Score algorithm is applied.</li>
-      <li>The grade and its components are shown.</li>
-    </ol>
-    <p>Nutri-Score is a nutritional profiling system. It is not a complete measure of whether a food is healthy in every dietary context.</p>
 
-    <h2>Methodology and limitations</h2>
-    <p><strong>Algorithm:</strong> the updated (2023) Nutri-Score algorithm. The older algorithm is not mixed in.</p>
-    <p><strong>Category supported:</strong> general foods only. Beverages, fats/oils/nuts/seeds, cheese and meat have their own official rules, which this project does not implement. For those, the site shows "Score unavailable" instead of guessing.</p>
-    <p><strong>Reference basis:</strong> all values are per 100 g. Energy is in kJ (converted from kcal only when kJ is missing).</p>
-    <p><strong>Unfavourable points (N):</strong> energy (0 to 10), sugars (0 to 15), saturated fat (0 to 10), salt (0 to 20).</p>
-    <p><strong>Favourable points (P):</strong> fibre (0 to 5), fruit, vegetables and legumes (0 to 5), protein (0 to 7). Protein is only counted when N is below 11.</p>
-    <p><strong>Final score = N &minus; P.</strong> Grades: A is &minus;1 or lower, B is 0 to 2, C is 3 to 10, D is 11 to 18, E is 19 or more.</p>
-    <p><strong>Missing data:</strong> if any required value is missing, no grade is calculated and the reason is shown. Missing values are never replaced with zero.</p>
-    <p><strong>Known limitations:</strong> data is crowd-sourced and can be incomplete or wrong; the fruit, vegetable and legume percentage is often an estimate made by Open Food Facts from the ingredient list; Nutri-Score describes nutritional profile only, not whether a food suits every diet. Grades from this site can differ from the grade stored by Open Food Facts.</p>
-    <p><strong>Tests:</strong> the scoring code is covered by automated tests of every table boundary, the protein rule, the grade boundaries and the unavailable cases.</p>
-    <p><strong>Official sources:</strong>
-      <a href="https://www.santepubliquefrance.fr/en/nutri-score">Sant&eacute; publique France</a>,
-      <a href="https://www.blv.admin.ch/dam/fr/sd-web/gIxXfypDnYOO/aktuelisierungsbericht-gremiums-nutri-score-2022-en.pdf">scientific committee update report</a>,
-      <a href="https://www.nature.com/articles/s43016-024-00920-3">Nature Food (2024)</a>.</p>
+    <section class="card">
+      <h2>Step by step</h2>
+      <ol>
+        <li>Search for a product, scan its barcode, or type the number.</li>
+        <li>We retrieve the available product data from Open Food Facts.</li>
+        <li>The nutrition values are normalized (per 100 g or 100 ml).</li>
+        <li>The appropriate product category is determined.</li>
+        <li>The relevant Nutri-Score algorithm is applied.</li>
+        <li>The grade and its components are shown.</li>
+      </ol>
+      <p>Nutri-Score is a nutritional profiling system. It is not a complete measure of whether a food is healthy in every dietary context.</p>
+    </section>
 
-    <h2>Data sources</h2>
-    <p>Product data comes from <a href="https://world.openfoodfacts.org">Open Food Facts</a>, a collaborative database published under the ODbL licence. The grade listed by Open Food Facts is source data. Any grade labelled "calculated" is produced by this project's own scoring code.</p>
-    <p>NutriScore is an independent educational project. It is not an official Nutri-Score service and is not endorsed by its owners.</p>
+    <section class="card sun">
+      <h2>Methodology and limitations</h2>
+      <p><b>Algorithm:</b> the updated (2023) Nutri-Score algorithm. The older algorithm is not mixed in.</p>
+      <p><b>Category supported:</b> general foods only. Beverages, fats/oils/nuts/seeds, cheese and meat have their own official rules, which this project does not implement. For those, the site shows "Score unavailable" instead of guessing.</p>
+      <p><b>Reference basis:</b> all values are per 100 g. Energy is in kJ (converted from kcal only when kJ is missing).</p>
+      <p><b>Unfavourable points (N):</b> energy (0 to 10), sugars (0 to 15), saturated fat (0 to 10), salt (0 to 20).</p>
+      <p><b>Favourable points (P):</b> fibre (0 to 5), fruit, vegetables and legumes (0 to 5), protein (0 to 7). Protein is only counted when N is below 11.</p>
+      <p><b>Final score = N &minus; P.</b> Grades: A is &minus;1 or lower, B is 0 to 2, C is 3 to 10, D is 11 to 18, E is 19 or more.</p>
+      <p><b>Missing data:</b> if any required value is missing, no grade is calculated and the reason is shown. Missing values are never replaced with zero.</p>
+      <p><b>Known limitations:</b> data is crowd-sourced and can be incomplete or wrong; the fruit, vegetable and legume percentage is often an estimate made by Open Food Facts from the ingredient list; Nutri-Score describes nutritional profile only, not whether a food suits every diet. Grades from this site can differ from the grade stored by Open Food Facts.</p>
+      <p><b>Tests:</b> the scoring code is covered by automated tests of every table boundary, the protein rule, the grade boundaries and the unavailable cases.</p>
+      <p><b>Official sources:</b>
+        <a href="https://www.santepubliquefrance.fr/en/nutri-score">Sant&eacute; publique France</a>,
+        <a href="https://www.blv.admin.ch/dam/fr/sd-web/gIxXfypDnYOO/aktuelisierungsbericht-gremiums-nutri-score-2022-en.pdf">scientific committee update report</a>,
+        <a href="https://www.nature.com/articles/s43016-024-00920-3">Nature Food (2024)</a>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Data sources</h2>
+      <p>Product data comes from <a href="https://world.openfoodfacts.org">Open Food Facts</a>, a collaborative database published under the ODbL licence. The grade listed by Open Food Facts is source data. Any grade labelled "calculated" is produced by this project's own scoring code.</p>
+      <p>Barcode scanning uses the open-source <a href="https://github.com/mebjas/html5-qrcode">html5-qrcode</a> library, which runs in your browser. Camera images are not uploaded anywhere.</p>
+      <p>NutriScore is an independent educational project. It is not an official Nutri-Score service and is not endorsed by its owners.</p>
+    </section>
   </main>
+
+  <footer class="site-footer">NutriScore is an independent student project. Product data from Open Food Facts.</footer>
 </body>
 </html>
