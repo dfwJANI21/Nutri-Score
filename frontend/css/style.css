@@ -23,7 +23,7 @@ h3 { font-size: 1.1rem; }
 /* ---------- Header / footer ---------- */
 .site-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem;
   padding: 1.1rem var(--pad); border-bottom: 3px solid var(--ink); }
-.wordmark { font-size: 1.7rem; font-weight: 700; letter-spacing: -.04em; color: var(--sun); text-decoration: none; }
+.wordmark { font-size: 1.7rem; font-weight: 800; letter-spacing: .04em; color: var(--sun); text-decoration: none; }
 .site-header nav a { margin-left: 1.6rem; font-weight: 700; text-decoration: none; }
 .site-header nav a:hover { color: var(--sun); }
 main { max-width: 72rem; margin: 0 auto; padding: 0 var(--pad) 10vh; }
